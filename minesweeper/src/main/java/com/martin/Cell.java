@@ -12,4 +12,12 @@ public class Cell {
   public void setMine(boolean mine) {
     isMine = mine;
   }
+
+  public boolean isReavealed() {
+    return false;
+  }
+
+  public String displayValue() {
+    return null;
+  }
 }

@@ -23,12 +23,17 @@ public class App {
 
   public void start() {
     //create a board
-    //so what we could do Is ask the user for their name, and if the name is Alex, set num mines to 99
+    //so what we could do Is ask the user for their name, and if the name is Alex, set num mines to 99. Why? FOR SCIENCE
+    userInput = new Scanner(System.in);
+
+    System.out.print("Please enter your name...");
+    String name = userInput.next();
 
     board = new Board();
-    board.init(10);
+    if (name.toLowerCase().equals("alex")) {
+      board.init(99);
+    } else board.init(10);
 
-    userInput = new Scanner(System.in);
     //primary game loop
 
     while (true) { //cause we may want to set this to false?

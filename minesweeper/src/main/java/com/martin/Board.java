@@ -28,7 +28,13 @@ public class Board {
     //add a bunch of mines which would be a 'type' of cell
 
     Random random = new Random();
+
     int minesPlaced = 0;
+    //need to a add a check to make sure nummines is less or equal to columns * rows
+    if (numMines > numCols * numCols) {
+      numMines = numRows * numCols;
+    }
+
     while (minesPlaced < numMines) {
       int row = random.nextInt(numRows);
       int col = random.nextInt(numCols);
@@ -53,10 +59,12 @@ public class Board {
         Cell cell = cells[row][col];
 
         //if cell status is x do x else print .
-        if (cell.isMine()) {
+
+        if (cell.isMine()) { //just for testing
           System.out.print("X ");
-        }
-        System.out.print(". ");
+        } else if (cell.isReavealed()) {
+          System.out.print(cell.displayValue() + " ");
+        } else System.out.print(". ");
       }
       System.out.println();
     }
