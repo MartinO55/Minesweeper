@@ -70,7 +70,9 @@ public class Board {
     }
   }
 
-  public void reveal(int row, int column) {}
+  public void reveal(int row, int column) {
+    //so this needs to check whether or not the cell is a mine
+  }
 
   public boolean exploded() {
     return false;
