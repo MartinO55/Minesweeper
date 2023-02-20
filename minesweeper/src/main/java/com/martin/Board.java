@@ -1,14 +1,18 @@
 package com.martin;
 
+import java.util.Random;
+
 public class Board {
 
   private int numRows = 10;
   private int numCols = 10;
+  private int numMines = 10;
+
   private Cell[][] cells;
 
   //   public Board() {}
 
-  public void init() {
+  public void init(int numMines) {
     //I guess we create a 2d array of cells and fill some with mines.. I wonder if there is a way to make every one of Alexs cells a mine? maybe by asking for a name?
     //this might help if we ever want to change the board size
     this.numRows = numRows;
@@ -23,6 +27,18 @@ public class Board {
     }
     //add a bunch of mines which would be a 'type' of cell
 
+    Random random = new Random();
+    int minesPlaced = 0;
+    while (minesPlaced < numMines) {
+      int row = random.nextInt(numRows);
+      int col = random.nextInt(numCols);
+      Cell cell = cells[row][col];
+
+      if (!cell.isMine()) {
+        cell.setMine(true);
+        minesPlaced++;
+      }
+    }
   }
 
   public void draw() {
@@ -37,6 +53,9 @@ public class Board {
         Cell cell = cells[row][col];
 
         //if cell status is x do x else print .
+        if (cell.isMine()) {
+          System.out.print("X ");
+        }
         System.out.print(". ");
       }
       System.out.println();

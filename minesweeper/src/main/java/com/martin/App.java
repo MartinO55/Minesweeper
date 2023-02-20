@@ -23,8 +23,10 @@ public class App {
 
   public void start() {
     //create a board
+    //so what we could do Is ask the user for their name, and if the name is Alex, set num mines to 99
+
     board = new Board();
-    board.init();
+    board.init(10);
 
     userInput = new Scanner(System.in);
     //primary game loop
