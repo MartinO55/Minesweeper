@@ -36,3 +36,17 @@
 
 - Flag mines
 - Have a fancy display. A grid with "?" "1" etc is fine
+
+### Outline
+
+Set up the game board: You can create a 2D array to represent the game board, where each element of the array represents a tile on the board.
+
+Place mines: You can randomly select elements of the 2D array to represent mines, and store the locations of the mines in another data structure.
+
+Calculate numbers for each tile: For each tile that isn't a mine, calculate the number of mines in its surrounding 8 tiles, and store that number in the corresponding element of the 2D array.
+
+Display the game board: You can use a graphical user interface (GUI) library such as JavaFX or Swing to display the game board to the user. Tiles that have not been clicked on yet can be displayed as covered, and tiles that have been clicked on can be displayed with either a number or a mine icon, depending on the contents of that tile.
+
+Handle user clicks: You can use the GUI library's event-handling mechanism to detect when the user clicks on a tile, and then reveal the contents of that tile. If the tile is a mine, the game ends. If the tile is a number, you can display that number. If the tile is blank, you can reveal all of the surrounding tiles.
+
+Implement game logic: You can use the 2D array and the data structure storing the locations of the mines to implement the game logic, such as checking for win conditions (when all mines have been found) and handling the display of the numbers and mines on the game board.
