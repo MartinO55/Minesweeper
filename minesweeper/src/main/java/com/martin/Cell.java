@@ -15,11 +15,11 @@ public class Cell {
   }
 
   public boolean isRevealed() {
-    return true;
+    return false;
   }
 
   public char displayValue() {
-    if (isRevealed) {
+    if (isRevealed) { //should be !isRevealed to hide stuff, inverted for testing
       return ('-');
     } else if (isMine) {
       return 'X';
