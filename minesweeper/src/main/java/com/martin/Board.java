@@ -62,7 +62,7 @@ public class Board {
 
         if (cell.isMine()) { //just for testing
           System.out.print("X ");
-        } else if (cell.isReavealed()) {
+        } else if (cell.isRevealed()) {
           System.out.print(cell.displayValue() + " ");
         } else System.out.print(". ");
       }

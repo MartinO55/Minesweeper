@@ -3,7 +3,7 @@ package com.martin;
 public class Cell {
 
   private boolean isMine;
-  private boolean isReavealed;
+  private boolean isRevealed;
 
   public boolean isMine() {
     return isMine;
@@ -13,7 +13,7 @@ public class Cell {
     isMine = mine;
   }
 
-  public boolean isReavealed() {
+  public boolean isRevealed() {
     return false;
   }
 
