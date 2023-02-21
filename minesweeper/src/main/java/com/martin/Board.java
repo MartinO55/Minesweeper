@@ -15,8 +15,8 @@ public class Board {
   public void init(int numMines) {
     //I guess we create a 2d array of cells and fill some with mines.. I wonder if there is a way to make every one of Alexs cells a mine? maybe by asking for a name?
     //this might help if we ever want to change the board size
-    this.numRows = numRows;
-    this.numCols = numCols;
+    // this.numRows = numRows;
+    // this.numCols = numCols;
     cells = new Cell[numRows][numCols];
 
     //put a cell into each spot on the array
