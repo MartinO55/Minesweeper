@@ -2,11 +2,6 @@ package com.martin;
 
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
-
 //So... this needs to  start the came, call the board, and manage the user interaction, and decide when the game is finished
 public class App {
 

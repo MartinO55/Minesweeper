@@ -22,7 +22,7 @@ public class Board {
     //put a cell into each spot on the array
     for (int row = 0; row < numRows; row++) {
       for (int col = 0; col < numCols; col++) {
-        cells[row][col] = new Cell();
+        cells[row][col] = new Cell(false);
       }
     }
     //add a bunch of mines which would be a 'type' of cell
@@ -85,7 +85,7 @@ public class Board {
         //if cell status is x do x else print .
         //cell.isRevealed()
         //midway figuring this out. using true to test the counting logic, which makes the else dead code at the moment
-        if (true) {
+        if (cell.isRevealed()) {
           System.out.print(cell.displayValue() + " ");
         } else System.out.print(". ");
       }
@@ -93,8 +93,44 @@ public class Board {
     }
   }
 
-  public void reveal(int row, int column) {
-    //so this needs to check whether or not the cell is a mine
+  public boolean reveal(int row, int column) {
+    Cell cell = cells[row][column];
+    //so this needs to check whether or not the cell is a mine, whether the cell has been already revealed and then recursively reveal more cells (maybe)
+    if (cell.isRevealed()) {
+      return false;
+    }
+    cell.setRevealed(true);
+
+    if (cell.isMine()) {
+      exploded();
+      return true; //and call exploded function
+    }
+
+    if (cell.getAdjacentMines() == 0) {
+      for (
+        int i = Math.max(0, row - 1);
+        i <= Math.min(numRows - 1, row + 1);
+        i++
+      ) {
+        for (
+          int j = Math.max(0, column - 1);
+          j <= Math.min(numCols - 1, column + 1);
+          j++
+        ) {
+          if (i != row || j != column) {
+            if (revealCell(i, j)) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+
+  private boolean revealCell(int i, int j) {
+    return false;
   }
 
   public boolean exploded() {
