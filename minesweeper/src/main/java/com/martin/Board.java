@@ -106,25 +106,25 @@ public class Board {
       return true; //and call exploded function
     }
 
-    if (cell.getAdjacentMines() == 0) {
-      for (
-        int i = Math.max(0, row - 1);
-        i <= Math.min(numRows - 1, row + 1);
-        i++
-      ) {
-        for (
-          int j = Math.max(0, column - 1);
-          j <= Math.min(numCols - 1, column + 1);
-          j++
-        ) {
-          if (i != row || j != column) {
-            if (revealCell(i, j)) {
-              return true;
-            }
-          }
-        }
-      }
-    }
+    // if (cell.getAdjacentMines() == 0) {
+    //   for (
+    //     int i = Math.max(0, row - 1);
+    //     i <= Math.min(numRows - 1, row + 1);
+    //     i++
+    //   ) {
+    //     for (
+    //       int j = Math.max(0, column - 1);
+    //       j <= Math.min(numCols - 1, column + 1);
+    //       j++
+    //     ) {
+    //       if (i != row || j != column) {
+    //         if (revealCell(i, j)) {
+    //           return true;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     return false;
   }
