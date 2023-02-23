@@ -39,6 +39,7 @@ public class App {
       //so you could just add an action input here
 
       //handle user input
+      //check for out of bounds input
       board.reveal(row, column);
       //check for explosions board.exploded() == true
 
@@ -50,6 +51,12 @@ public class App {
         break;
       }
       //need a way to end the game on a win
+      if (board.checkForWin()) {
+        board.reveal(row, column);
+        board.draw();
+        System.out.println("Congratulations!!! You are the Minesweeper!");
+        break;
+      }
     }
 
     userInput.close();

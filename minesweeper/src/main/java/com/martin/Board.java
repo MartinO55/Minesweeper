@@ -6,7 +6,8 @@ public class Board {
 
   private int numRows = 10;
   private int numCols = 10;
-  //private int numMines = 10;
+  private int CellsNeededToWin = 0;
+  private int numMines = 10;
 
   private Cell[][] cells;
 
@@ -94,11 +95,16 @@ public class Board {
 
   public boolean reveal(int row, int column) {
     Cell cell = cells[row][column];
+
     //so this needs to check whether or not the cell is a mine, whether the cell has been already revealed and then recursively reveal more cells (maybe)
     if (cell.isRevealed()) {
       return false;
     }
     cell.setRevealed(true);
+
+    if (!cell.isMine()) {
+      CellsNeededToWin++;
+    }
 
     //I am not sure this does anything anymore
     if (cell.isMine() == true) {
@@ -113,12 +119,15 @@ public class Board {
   //   cell.setRevealed(true);
   // }
 
+  public boolean checkForWin() {
+    int numCellsToWin = numRows * numCols - numMines;
+    return CellsNeededToWin == numCellsToWin;
+  }
+
   public boolean exploded(int row, int column) {
     Cell cell = cells[row][column];
     if (cell.isMine() == true) {
       return true;
     } else return false;
-    //System.out.println("You went out with a Bang!");
-
   }
 }

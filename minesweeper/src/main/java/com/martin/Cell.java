@@ -5,6 +5,7 @@ public class Cell {
   public boolean isMine;
   private boolean isRevealed;
   private int adjacentMines;
+  public int cellCount;
 
   public Cell(boolean isMine) {
     this.isMine = isMine;
