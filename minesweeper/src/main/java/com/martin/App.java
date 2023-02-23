@@ -18,7 +18,7 @@ public class App {
 
   public void start() {
     //create a board
-    //so what we could do Is ask the user for their name, and if the name is Alex, set num mines to 99. Why? FOR SCIENCE
+
     userInput = new Scanner(System.in);
 
     System.out.print("Please enter your name...");
