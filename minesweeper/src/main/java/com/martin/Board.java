@@ -6,7 +6,7 @@ public class Board {
 
   private int numRows = 10;
   private int numCols = 10;
-  private int numMines = 10;
+  //private int numMines = 10;
 
   private Cell[][] cells;
 
@@ -100,38 +100,18 @@ public class Board {
     }
     cell.setRevealed(true);
 
+    //I am not sure this does anything anymore
     if (cell.isMine() == true) {
       cell.setRevealed(true);
-      //
-      //return true; //and call exploded function
-    }
-
-    if (cell.getAdjacentMines() == 0) {
-      for (
-        int i = Math.max(0, row - 1);
-        i <= Math.min(numRows - 1, row + 1);
-        i++
-      ) {
-        for (
-          int j = Math.max(0, column - 1);
-          j <= Math.min(numCols - 1, column + 1);
-          j++
-        ) {
-          if (i != row || j != column) {
-            if (revealCell(i, j)) {
-              return true;
-            }
-          }
-        }
-      }
     }
 
     return false;
   }
 
-  private boolean revealCell(int i, int j) {
-    return false;
-  }
+  // private void revealCell(int row, int column) {
+  //   Cell cell = cells[row][column];
+  //   cell.setRevealed(true);
+  // }
 
   public boolean exploded(int row, int column) {
     Cell cell = cells[row][column];
