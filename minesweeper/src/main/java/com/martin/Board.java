@@ -83,8 +83,7 @@ public class Board {
       for (int col = 0; col < numCols; col++) {
         Cell cell = cells[row][col];
         //if cell status is x do x else print .
-        //cell.isRevealed()
-        //midway figuring this out. using true to test the counting logic, which makes the else dead code at the moment
+
         if (cell.isRevealed()) {
           System.out.print(cell.displayValue() + " ");
         } else System.out.print(". ");
@@ -101,30 +100,31 @@ public class Board {
     }
     cell.setRevealed(true);
 
-    if (cell.isMine()) {
-      exploded();
-      return true; //and call exploded function
+    if (cell.isMine() == true) {
+      cell.setRevealed(true);
+      //
+      //return true; //and call exploded function
     }
 
-    // if (cell.getAdjacentMines() == 0) {
-    //   for (
-    //     int i = Math.max(0, row - 1);
-    //     i <= Math.min(numRows - 1, row + 1);
-    //     i++
-    //   ) {
-    //     for (
-    //       int j = Math.max(0, column - 1);
-    //       j <= Math.min(numCols - 1, column + 1);
-    //       j++
-    //     ) {
-    //       if (i != row || j != column) {
-    //         if (revealCell(i, j)) {
-    //           return true;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    if (cell.getAdjacentMines() == 0) {
+      for (
+        int i = Math.max(0, row - 1);
+        i <= Math.min(numRows - 1, row + 1);
+        i++
+      ) {
+        for (
+          int j = Math.max(0, column - 1);
+          j <= Math.min(numCols - 1, column + 1);
+          j++
+        ) {
+          if (i != row || j != column) {
+            if (revealCell(i, j)) {
+              return true;
+            }
+          }
+        }
+      }
+    }
 
     return false;
   }
@@ -133,7 +133,12 @@ public class Board {
     return false;
   }
 
-  public boolean exploded() {
-    return false;
+  public boolean exploded(int row, int column) {
+    Cell cell = cells[row][column];
+    if (cell.isMine() == true) {
+      return true;
+    } else return false;
+    //System.out.println("You went out with a Bang!");
+
   }
 }

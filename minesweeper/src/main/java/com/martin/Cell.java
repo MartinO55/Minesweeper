@@ -2,7 +2,7 @@ package com.martin;
 
 public class Cell {
 
-  private boolean isMine;
+  public boolean isMine;
   private boolean isRevealed;
   private int adjacentMines;
 

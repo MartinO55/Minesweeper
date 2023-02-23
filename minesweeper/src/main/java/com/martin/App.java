@@ -40,9 +40,11 @@ public class App {
 
       //handle user input
       board.reveal(row, column);
-      //check for explosions
+      //check for explosions board.exploded() == true
 
-      if (board.exploded()) {
+      if (board.exploded(row, column) == true) {
+        board.reveal(row, column);
+        board.draw();
         System.out.println("You went out with a Bang!");
 
         break;
