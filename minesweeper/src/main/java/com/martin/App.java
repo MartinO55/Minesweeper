@@ -20,6 +20,26 @@ public class App {
     //create a board
 
     userInput = new Scanner(System.in);
+    System.out.println(
+      " __  __ _                                                   "
+    );
+    System.out.println(
+      "|  \\/  (_)                                                  "
+    );
+    System.out.println(
+      "| \\  / |_ _ __   ___  _____      _____  ___ _ __   ___ _ __"
+    );
+    System.out.println(
+      "| |\\/| | | '_ \\ / _ \\/ __\\ \\ /\\ / / _ \\/ _ \\ '_ \\ / _ \\ '__|"
+    );
+    System.out.println(
+      "| |  | | | | | |  __/\\__ \\\\ V  V /  __/  __/ |_) |  __/ |"
+    );
+    System.out.println(
+      "|_|  |_|_|_| |_|\\___||___/ \\_/\\_/ \\___|\\___| .__/ \\___|_|"
+    );
+    System.out.println("                                            | |");
+    System.out.println("                                            |_|");
 
     System.out.print("Please enter your name...");
     String name = userInput.next();
@@ -47,7 +67,7 @@ public class App {
 
       board.reveal(row, column);
 
-      //check for explosions
+      //check for explosionss
       if (board.exploded(row, column) == true) {
         board.reveal(row, column);
         board.draw();
@@ -60,7 +80,7 @@ public class App {
         board.reveal(row, column);
         board.draw();
         System.out.printf(
-          "Congratulations %d!!! You are the Minesweeper!",
+          "Congratulations comrade %d!!! You are the Minesweeper!",
           name
         );
         break;
@@ -74,7 +94,7 @@ public class App {
     System.out.print(message);
 
     while (!userInput.hasNextInt()) {
-      System.out.print("enter a number...");
+      System.out.print("enter a number, comrade...");
       userInput.next();
     }
 
