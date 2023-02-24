@@ -25,8 +25,20 @@ public class Cell {
     return isRevealed;
   }
 
+  public void setRevealed(boolean revealed) {
+    this.isRevealed = revealed;
+  }
+
+  public void setAdjacentMines(int count) {
+    this.adjacentMines = count;
+  }
+
+  public int getAdjacentMines() {
+    return adjacentMines;
+  }
+
   public char displayValue() {
-    if (!isRevealed) { //should be !isRevealed to hide stuff, inverted for testing
+    if (!isRevealed) { //should be !isRevealed to hide stuff, invert for testing
       return ('-');
     } else if (isMine) {
       return 'X';
@@ -35,17 +47,5 @@ public class Cell {
     } else {
       return (char) ('0' + adjacentMines);
     }
-  }
-
-  public void setAdjacentMines(int count) {
-    this.adjacentMines = count;
-  }
-
-  public void setRevealed(boolean b) {
-    this.isRevealed = b;
-  }
-
-  public int getAdjacentMines() {
-    return adjacentMines;
   }
 }

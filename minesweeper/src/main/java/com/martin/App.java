@@ -30,19 +30,24 @@ public class App {
     } else board.init(10);
 
     //primary game loop
-
-    while (true) { //cause we may want to set this to false?
+    while (true) {
       board.draw();
-      //get user input
+      //get user input, handle it
       int row = getInput("input row: ");
-      int column = getInput("input column: ");
-      //so you could just add an action input here
-
-      //handle user input
       //check for out of bounds input
-      board.reveal(row, column);
-      //check for explosions board.exploded() == true
+      while (row > board.numRows) {
+        row = getInput("That row is not assigned to you, comrade!: ");
+      }
+      int column = getInput("Input column: ");
+      while (column > board.numCols) {
+        column = getInput("That column is not assigned to you, comrade!: ");
+      }
 
+      //so you could just add an action input here, input action
+
+      board.reveal(row, column);
+
+      //check for explosions
       if (board.exploded(row, column) == true) {
         board.reveal(row, column);
         board.draw();
@@ -50,11 +55,14 @@ public class App {
 
         break;
       }
-      //need a way to end the game on a win
+      //check to end the game on a win
       if (board.checkForWin()) {
         board.reveal(row, column);
         board.draw();
-        System.out.println("Congratulations!!! You are the Minesweeper!");
+        System.out.printf(
+          "Congratulations %d!!! You are the Minesweeper!",
+          name
+        );
         break;
       }
     }

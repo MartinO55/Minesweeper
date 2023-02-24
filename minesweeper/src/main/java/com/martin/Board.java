@@ -4,17 +4,15 @@ import java.util.Random;
 
 public class Board {
 
-  private int numRows = 10;
-  private int numCols = 10;
+  public int numRows = 10;
+  public int numCols = 10;
   private int CellsNeededToWin = 0;
   private int numMines = 10;
 
   private Cell[][] cells;
 
-  //   public Board() {}
-
   public void init(int numMines) {
-    //I guess we create a 2d array of cells and fill some with mines...
+    // create a 2d array of cells...
     //this might help if we ever want to change the board size
     //this.numRows = numRows;
     //this.numCols = numCols;
@@ -26,16 +24,17 @@ public class Board {
         cells[row][col] = new Cell(false);
       }
     }
-    //add a bunch of mines which would be a 'type' of cell
 
+    //add a bunch of mines
     Random random = new Random();
 
     int minesPlaced = 0;
+
     //need to a add a check to make sure nummines is less or equal to columns * rows
     if (numMines > numCols * numCols) {
       numMines = numRows * numCols;
     }
-
+    //plant the mines
     while (minesPlaced < numMines) {
       int row = random.nextInt(numRows);
       int col = random.nextInt(numCols);
@@ -46,6 +45,7 @@ public class Board {
         minesPlaced++;
       }
     }
+
     //count the adjacent mines on the board
     for (int row = 0; row < numRows; row++) {
       for (int col = 0; col < numCols; col++) {
@@ -58,6 +58,7 @@ public class Board {
     }
   }
 
+  //count mines adjacent ot a cell to get the numbers
   public int countAdjacentMines(int row, int col) {
     int count = 0;
 
@@ -73,6 +74,7 @@ public class Board {
     return count;
   }
 
+  //draw the grid in the CLI
   public void draw() {
     System.out.print("  ");
     for (int col = 0; col < numCols; col++) {
@@ -114,11 +116,7 @@ public class Board {
     return false;
   }
 
-  // private void revealCell(int row, int column) {
-  //   Cell cell = cells[row][column];
-  //   cell.setRevealed(true);
-  // }
-
+  //win and lose conditions
   public boolean checkForWin() {
     int numCellsToWin = numRows * numCols - numMines;
     return CellsNeededToWin == numCellsToWin;
